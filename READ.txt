@@ -1,1 +1,1 @@
-SARA LOCAL AI USING OLLAMA 3.2:1B MODEL
+ Retrieval-Augmented Generation (RAG)

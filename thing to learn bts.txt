@@ -1,0 +1,5 @@
+#NOTES ON WHAT TO LEARN BTS:
+1.python virtual environment
+2.langchain - LangChain is an open-source framework designed to simplify building applications with large language models. 
+3.langchain-chroma-The langchain-chroma package connects LangChain with the Chroma vector database. It lets you store text embeddings and perform fast semantic searches for retrieval-augmented generation (RAG) application
+4.langchain ollama - Combining LangChain and Ollama allows you to build powerful, private AI applications locally. Ollama runs open-source models like Llama 3 on your machine, while LangChain provides the tools to connect them into chains, agents, and retrieval systems
