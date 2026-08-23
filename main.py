@@ -10,16 +10,16 @@ model=OllamaLLM(model="llama3.2:1b")
 
 
 
-Template="""
+Template=Template = """
+You are an expert in summarizing and extracting information from text.
 
-You are an expert in summarizing text. given a text {TEXT}, you will provide a concise summary of the main points and key information. Please ensure that the summary is clear, accurate, and captures the essence of the original text.
+Context:
+{TEXT}
 
-the summary should be in bullet points format, highlighting the most important aspects of the text. Avoid including unnecessary details or personal opinions. The summary should be easy to read and understand, providing a quick overview of the content.
+Question:
+{QUESTIONS}
 
-also add a conclusion sentence that encapsulates the overall message of the text.
-
-Here is the questions to answer: {QUESTIONS}
-
+Based strictly on the provided context above, provide a clear and concise response in bullet points, followed by a one-sentence conclusion. If the answer is not contained in the text, state that clearly.
 """
 
 
@@ -30,33 +30,53 @@ prompt=ChatPromptTemplate.from_template(Template)
 
 chain=prompt | model
 
+print("\n--------------------------------------")
+print("\n--------------------------------------")
+ask="summary in detail "
+summary=retriever.invoke(ask)
+result = chain.invoke(
 
+  {"TEXT": summary, "QUESTIONS": ask}
+
+)
+print(result)
+print("\n---------------------------------------")
+print("---------------------------------------")
+
+#ask="ask user if the user have any query regarding the data with qn mark "
+#summary=retriever.invoke(ask)
+#result = chain.invoke(
+
+#  {"TEXT": summary, "QUESTIONS": ask}
+
+#)
+#print(result)
+#print("\n---------------------------------------")
+#print("---------------------------------------")
 
 while True:
 
  
-
-  ask=input("anything you want (press q to quit ) :")
-
+  print("\n---------------------------------------")
+  print("---------------------------------------")
+  ask=input("keep asking or press q to exit chat  : ")
   if ask=="q":
 
     break
 
 
 
-  reviews=retriever.invoke(ask)
+  summary=retriever.invoke(ask)
 
 
 
   result = chain.invoke(
 
-  {"TEXT": reviews, "QUESTIONS": ask}
+  {"TEXT": summary, "QUESTIONS": ask}
 
 )
 
   print(result)
 
   print("\n-----------------------------------------------")
-
   print("\n-----------------------------------------------")
-

@@ -4,16 +4,14 @@ from langchain_chroma import Chroma #import chrome -> manage local vectors and q
 
 from langchain_core.documents import Document
 
-from pathlib import Path
-
 import os
 
 import pandas as pd # to read csv file
 
-
-
-df = pd.read_csv("story.csv")
-
+a=input("ENTER NAME WHICH FILE TO READ : ")
+a=a+".csv"
+db_location = "./chroma_db"
+df=pd.read_csv(a)
 
 
 embedding=OllamaEmbeddings(model="mxbai-embed-large")
@@ -34,7 +32,7 @@ if add_document:
 
     document=Document(
 
-      page_content=row["TITLE"]+" "+row["Review"],metadata={"rating":row["Rating"],"date":row["Date"]},
+      page_content=row["TITLE"]+" "+row["IMPORTANT POINTS"],metadata={"rating":row["Rating"],"date":row["Date"]},
 
       id=str(i)
 
