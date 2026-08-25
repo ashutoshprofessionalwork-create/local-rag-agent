@@ -23,7 +23,6 @@ Based strictly on the provided context above, provide a clear and concise respon
 """
 
 
-
 prompt=ChatPromptTemplate.from_template(Template)
 
 
